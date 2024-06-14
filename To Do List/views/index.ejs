@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="main">
+        <form action="/submit" method="post">
+            <textarea name="Task" placeholder="Enter your Task here" cols="60" rows="80"></textarea>
+            <button class="btn" type="submit" >Add Task</button>
+        </form>
+        <div id="tasks-list">
+            <% if(locals.length) { %>
+                <% if(length > 0){ %>
+                        <% for(let i = 0; i<length; i+=1){ %>
+                            <div class="task-func">
+                                <div id="task">
+                                    <%= tasks[i].task %>
+                                </div>
+                                <form action="/delete" method="post">
+                                    <input name="id" type="hidden" value="<%= tasks[i].id %>">
+                                    <input class="btn" type="submit" value="Delete">
+                                </form>
+                            </div>
+                        <% } %>
+                <% } %>
+        <% } %>
+        </div>
+    </div>
+</body>
+</html>
